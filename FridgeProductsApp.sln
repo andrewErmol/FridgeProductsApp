@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32505.173
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FridgeProductsApp.Domain", "FridgeProductsApp.Domain\FridgeProductsApp.Domain.csproj", "{08BA1109-691E-4823-AC71-8D805FA629F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FridgeProductsApp.Domain", "FridgeProductsApp.Domain\FridgeProductsApp.Domain.csproj", "{08BA1109-691E-4823-AC71-8D805FA629F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FridgeProductsApp.Contracts", "FridgeProductsApp.Contracts\FridgeProductsApp.Contracts.csproj", "{7BB9CFE0-7598-43DF-95D7-059747D9E997}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FridgeProductsApp.Contracts", "FridgeProductsApp.Contracts\FridgeProductsApp.Contracts.csproj", "{7BB9CFE0-7598-43DF-95D7-059747D9E997}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FridgeProductsApp.Database", "FridgeProductsApp.Database\FridgeProductsApp.Database.csproj", "{729DA9F9-0718-4E90-95DA-C9E8EE445E43}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FridgeProductsApp.Database", "FridgeProductsApp.Database\FridgeProductsApp.Database.csproj", "{729DA9F9-0718-4E90-95DA-C9E8EE445E43}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FridgeProductsApp.API", "FridgeProductsApp.API\FridgeProductsApp.API.csproj", "{4C2CA574-C7C5-4712-B3E6-101C98F622E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FridgeProductsApp.API", "FridgeProductsApp.API\FridgeProductsApp.API.csproj", "{4C2CA574-C7C5-4712-B3E6-101C98F622E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FridgeProductsApp.LoggerService", "FridgeProductsApp.LoggerService\FridgeProductsApp.LoggerService.csproj", "{C6FEF3C6-77E0-4C70-B348-6AF34B3FC0F9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{4C2CA574-C7C5-4712-B3E6-101C98F622E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4C2CA574-C7C5-4712-B3E6-101C98F622E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4C2CA574-C7C5-4712-B3E6-101C98F622E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6FEF3C6-77E0-4C70-B348-6AF34B3FC0F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6FEF3C6-77E0-4C70-B348-6AF34B3FC0F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6FEF3C6-77E0-4C70-B348-6AF34B3FC0F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6FEF3C6-77E0-4C70-B348-6AF34B3FC0F9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

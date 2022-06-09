@@ -1,4 +1,9 @@
-﻿namespace FridgeProductsApp.API.Extensions
+﻿using FridgeProductsApp.Contracts;
+using FridgeProductsApp.Database;
+using FridgeProductsApp.LoggerService;
+using Microsoft.EntityFrameworkCore;
+
+namespace FridgeProductsApp.API.Extensions
 {
     public static class ServiceExtensions
     {
@@ -15,5 +20,16 @@
             services.Configure<IISOptions>(options =>
             {
             });
+
+        public static void ConfigureLoggerService(this IServiceCollection services) =>
+             services.AddScoped<ILoggerManager, LoggerManager>();
+
+        public static void ConfigureSqlContext(this IServiceCollection services,
+            IConfiguration configuration)
+        {
+            services.AddDbContext<FridgeProductsDbContext>(opts =>
+            opts.UseSqlServer(configuration.GetConnectionString("SqlConnection"), b =>
+            b.MigrationsAssembly("FridgeProductsApp.Database")));
+        }            
     }
 }

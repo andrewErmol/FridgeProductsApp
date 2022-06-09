@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace FridgeProducts.Domain.Models
 {
-    public class Products
+    public class Product
     {
         [Required(ErrorMessage = "Products Id is a required field")]
-        public Guid Id;
+        public Guid Id { get; set; }
 
         [Required(ErrorMessage = "Name is a required field")]
-        public string Name;
+        public string Name { get; set; }
 
-        public int DefaultQuantity;
+        public int DefaultQuantity { get; set; }
     }
 }
