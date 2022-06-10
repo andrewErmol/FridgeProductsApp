@@ -23,7 +23,7 @@ namespace FridgeProductsApp.API.Controllers
         {
             try
             {
-                var products = _repository.FridgeProduct.GetAllFridgesProducts(trackChanges: false);
+                var products = _repository.Product.GetAllProducts(trackChanges: false);
                 return Ok(products);
             }
             catch (Exception ex)

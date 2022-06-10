@@ -1,5 +1,6 @@
 ﻿using FridgeProducts.Domain.Models;
 using FridgeProductsApp.Contracts.IRepositories;
+using Microsoft.EntityFrameworkCore;
 
 namespace FridgeProductsApp.Database.Repository
 {
@@ -11,6 +12,6 @@ namespace FridgeProductsApp.Database.Repository
         }
 
         public IEnumerable<FridgeProduct> GetAllFridgesProducts(bool trackChanges) => 
-            FindAll(trackChanges).ToList();
+            FindAll(trackChanges).Include(fp => fp.Fridge).Include(fp => fp.Product).ToList();
     }
 }

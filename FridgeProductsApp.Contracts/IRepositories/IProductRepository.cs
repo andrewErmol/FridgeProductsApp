@@ -9,6 +9,6 @@ namespace FridgeProductsApp.Contracts.IRepositories
 {
     public interface IProductRepository
     {
-        IEnumerable<Product> GetAllProducts(bool trackChenges);
+        IEnumerable<Product> GetAllProducts(bool trackChanges);
     }
 }

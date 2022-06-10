@@ -86,9 +86,9 @@ namespace FridgeProductsApp.Database.Migrations
                 columns: new[] { "Id", "Name", "YearOfRelease" },
                 values: new object[,]
                 {
-                    { new Guid("057f5256-f967-4dcb-ad44-6f8911998ed9"), "Apple", 4 },
-                    { new Guid("69682051-c967-4628-bdf0-ac7c06bd6113"), "Milk", 1 },
-                    { new Guid("94df093d-97ea-48a7-a0a4-f57904a95743"), "Banana", 3 }
+                    { new Guid("057f5256-f967-4dcb-ad44-6f8911998ed9"), "bukaviicifari6", 1985 },
+                    { new Guid("69682051-c967-4628-bdf0-ac7c06bd6113"), "145-buckavi62687-4521", 1123 },
+                    { new Guid("94df093d-97ea-48a7-a0a4-f57904a95743"), "prostocifari123", 2018 }
                 });
 
             migrationBuilder.InsertData(

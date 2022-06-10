@@ -1,4 +1,6 @@
+using AutoMapper;
 using FridgeProductsApp.API.Extensions;
+using FridgeProductsApp.Domain;
 using Microsoft.AspNetCore.HttpOverrides;
 using NLog;
 
@@ -19,6 +21,9 @@ LogManager.LoadConfiguration(string.Concat(Directory.GetCurrentDirectory(), "/nl
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.ConfigureLoggerService();
+
+builder.Services.AddAutoMapper(typeof(MappingProfile));
+
 
 var app = builder.Build();
 

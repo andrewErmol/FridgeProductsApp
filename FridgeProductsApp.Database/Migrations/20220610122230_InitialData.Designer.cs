@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FridgeProductsApp.Database.Migrations
 {
     [DbContext(typeof(FridgeProductsDbContext))]
-    [Migration("20220609085955_InitialData")]
+    [Migration("20220610122230_InitialData")]
     partial class InitialData
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -139,20 +139,20 @@ namespace FridgeProductsApp.Database.Migrations
                         new
                         {
                             Id = new Guid("69682051-c967-4628-bdf0-ac7c06bd6113"),
-                            Name = "Milk",
-                            YearOfRelease = 1
+                            Name = "145-buckavi62687-4521",
+                            YearOfRelease = 1123
                         },
                         new
                         {
                             Id = new Guid("057f5256-f967-4dcb-ad44-6f8911998ed9"),
-                            Name = "Apple",
-                            YearOfRelease = 4
+                            Name = "bukaviicifari6",
+                            YearOfRelease = 1985
                         },
                         new
                         {
                             Id = new Guid("94df093d-97ea-48a7-a0a4-f57904a95743"),
-                            Name = "Banana",
-                            YearOfRelease = 3
+                            Name = "prostocifari123",
+                            YearOfRelease = 2018
                         });
                 });
 
