@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FridgeProductsApp.Database.Repository
 {
-    public class RepositoryManager
+    public class RepositoryManager : IRepositoryManager
     {
         private FridgeProductsDbContext _fridgeProductsDbContext;
         private IFridgeRepository _fridgeRepository;

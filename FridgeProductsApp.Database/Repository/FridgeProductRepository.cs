@@ -9,5 +9,8 @@ namespace FridgeProductsApp.Database.Repository
             : base(fridgeProductsDbContext)
         {
         }
+
+        public IEnumerable<FridgeProduct> GetAllFridgesProducts(bool trackChanges) => 
+            FindAll(trackChanges).ToList();
     }
 }

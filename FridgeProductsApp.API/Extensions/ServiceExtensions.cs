@@ -1,5 +1,7 @@
 ﻿using FridgeProductsApp.Contracts;
+using FridgeProductsApp.Contracts.IRepositories;
 using FridgeProductsApp.Database;
+using FridgeProductsApp.Database.Repository;
 using FridgeProductsApp.LoggerService;
 using Microsoft.EntityFrameworkCore;
 
@@ -30,6 +32,8 @@ namespace FridgeProductsApp.API.Extensions
             services.AddDbContext<FridgeProductsDbContext>(opts =>
             opts.UseSqlServer(configuration.GetConnectionString("SqlConnection"), b =>
             b.MigrationsAssembly("FridgeProductsApp.Database")));
-        }            
+        }
+        public static void ConfigureRepositoryManager(this IServiceCollection services) =>
+            services.AddScoped<IRepositoryManager, RepositoryManager>();
     }
 }

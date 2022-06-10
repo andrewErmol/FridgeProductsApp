@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FridgeProducts.Domain.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,6 @@ namespace FridgeProductsApp.Contracts.IRepositories
 {
     public interface IFridgeRepository
     {
+        IEnumerable<Fridge> GetAllFridges(bool trackChanges);
     }
 }

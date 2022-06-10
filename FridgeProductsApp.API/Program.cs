@@ -5,6 +5,7 @@ using NLog;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.ConfigureSqlContext(builder.Configuration);
+builder.Services.ConfigureRepositoryManager();
 
 // Add services to the container.
 builder.Services.AddControllers();
