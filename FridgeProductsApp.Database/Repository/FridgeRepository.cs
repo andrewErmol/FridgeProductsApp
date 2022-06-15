@@ -13,5 +13,9 @@ namespace FridgeProductsApp.Database.Repository
 
         public IEnumerable<Fridge> GetAllFridges(bool trackChanges) =>
             FindAll(trackChanges).Include(f => f.Model).OrderBy(f => f.Name).ToList();
+
+        public Fridge GetFridge(Guid fridgeId, bool trackChanges) =>
+            FindByCondition(f => f.Id.Equals(fridgeId), trackChanges).Include(f => f.Model)
+            .SingleOrDefault();
     }
 }

@@ -1,5 +1,6 @@
 ﻿using FridgeProducts.Domain.Models;
 using FridgeProductsApp.Contracts.IRepositories;
+using Microsoft.EntityFrameworkCore;
 
 namespace FridgeProductsApp.Database.Repository
 {
@@ -12,5 +13,9 @@ namespace FridgeProductsApp.Database.Repository
 
         public IEnumerable<Product> GetAllProducts(bool trackChanges) =>
             FindAll(trackChanges).OrderBy(f => f.Name).ToList();
+
+        public Product GetProduct(Guid productId, bool trackChanges) =>
+            FindByCondition(p => p.Id.Equals(productId), trackChanges)
+            .SingleOrDefault();
     }
 }

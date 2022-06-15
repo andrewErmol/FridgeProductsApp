@@ -16,6 +16,7 @@ namespace FridgeProductsApp.Domain
             CreateMap<Fridge, FridgeDto>()
                 .ForMember(f => f.Model,
                 opt => opt.MapFrom(x => string.Join(' ', x.Model.Name, x.Model.YearOfRelease)));
+
             CreateMap<FridgeProduct, FridgeProductDto>()
                 .ForMember(fp => fp.FridgeName, opt => opt.MapFrom(x => $"{x.Fridge.Name}"))
                 .ForMember(fp => fp.ProductName, opt => opt.MapFrom(x => $"{x.Product.Name}"))

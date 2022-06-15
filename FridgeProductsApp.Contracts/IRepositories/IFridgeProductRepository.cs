@@ -10,5 +10,7 @@ namespace FridgeProductsApp.Contracts.IRepositories
     public interface IFridgeProductRepository
     {
         IEnumerable<FridgeProduct> GetAllFridgesProducts(bool trackChanges);
+        FridgeProduct GetFridgeProduct(Guid fridgeProductId, bool trackChanges);
+        IEnumerable<FridgeProduct> GetProductsInsideFridge(Guid fridgeId, bool trackChanges);
     }
 }

@@ -13,5 +13,14 @@ namespace FridgeProductsApp.Database.Repository
 
         public IEnumerable<FridgeProduct> GetAllFridgesProducts(bool trackChanges) => 
             FindAll(trackChanges).Include(fp => fp.Fridge).Include(fp => fp.Product).ToList();
+
+        public FridgeProduct GetFridgeProduct(Guid fridgeProductId, bool trackChanges) =>
+            FindByCondition(fp => fp.Id.Equals(fridgeProductId), trackChanges)
+            .Include(fp => fp.Fridge).Include(fp => fp.Product)
+            .SingleOrDefault();
+
+        public IEnumerable<FridgeProduct> GetProductsInsideFridge(Guid fridgeId, bool trackChanges) =>
+            FindAll(trackChanges).Where(fp => fp.FridgeId == fridgeId)
+            .Include(fp => fp.Fridge).Include(fp => fp.Product).ToList();
     }
 }

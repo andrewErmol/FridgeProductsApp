@@ -24,7 +24,7 @@ namespace FridgeProductsApp.Database.Repository
             .AsNoTracking() :
             FridgeProductsDbContext.Set<T>();
 
-        IQueryable<T> IRepositoryBase<T>.FindByCondition(Expression<Func<T, bool>> expression, bool trackChanges) =>
+        public IQueryable<T> FindByCondition(Expression<Func<T, bool>> expression, bool trackChanges) =>
             !trackChanges ?
             FridgeProductsDbContext.Set<T>()
             .Where(expression)

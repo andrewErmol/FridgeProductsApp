@@ -1,5 +1,6 @@
 using AutoMapper;
 using FridgeProductsApp.API.Extensions;
+using FridgeProductsApp.Contracts;
 using FridgeProductsApp.Domain;
 using Microsoft.AspNetCore.HttpOverrides;
 using NLog;
@@ -37,6 +38,14 @@ if (app.Environment.IsDevelopment())
 else
 {
     app.UseHsts();
+}
+
+{
+    using var scope = app.Services.CreateScope();
+    var services = scope.ServiceProvider;
+
+    ILoggerManager logger = services.GetService<ILoggerManager>();
+    app.ConfigureExceptionHandler(logger);
 }
 
 app.UseHttpsRedirection();

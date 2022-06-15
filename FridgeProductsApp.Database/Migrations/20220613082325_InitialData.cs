@@ -119,7 +119,7 @@ namespace FridgeProductsApp.Database.Migrations
             migrationBuilder.InsertData(
                 table: "FridgeProducts",
                 columns: new[] { "Id", "FridgeId", "ProductId", "Quantity" },
-                values: new object[] { new Guid("c2ae232e-ff5b-4965-b474-2d1095b6c8ce"), new Guid("3f2966cc-c0d1-4c07-858d-e5191ef458a0"), new Guid("71ef7bc0-300b-40cc-b2e3-07123bec1137"), 0 });
+                values: new object[] { new Guid("c2ae232e-ff5b-4965-b474-2d1095b6c8ce"), new Guid("3f2966cc-c0d1-4c07-858d-e5191ef458a0"), new Guid("71ef7bc0-300b-40cc-b2e3-07123bec1137"), 2 });
 
             migrationBuilder.InsertData(
                 table: "FridgeProducts",
@@ -129,7 +129,7 @@ namespace FridgeProductsApp.Database.Migrations
             migrationBuilder.InsertData(
                 table: "FridgeProducts",
                 columns: new[] { "Id", "FridgeId", "ProductId", "Quantity" },
-                values: new object[] { new Guid("f1cfc80d-f296-4184-b3b7-ef183256957d"), new Guid("5cc31465-a342-4b0f-a28c-6cd400a36bf5"), new Guid("9e66f3fd-3d2d-4fb3-a0b3-be5a917dc424"), 0 });
+                values: new object[] { new Guid("f1cfc80d-f296-4184-b3b7-ef183256957d"), new Guid("5cc31465-a342-4b0f-a28c-6cd400a36bf5"), new Guid("9e66f3fd-3d2d-4fb3-a0b3-be5a917dc424"), 3 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_FridgeProducts_FridgeId",

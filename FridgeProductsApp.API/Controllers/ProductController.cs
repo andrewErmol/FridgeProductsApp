@@ -19,17 +19,24 @@ namespace FridgeProductsApp.API.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetProducts()
+        public IActionResult GetAllProducts()
         {
-            try
+            var products = _repository.Product.GetAllProducts(trackChanges: false);
+            return Ok(products);
+        }
+
+        [HttpGet("{id}")]
+        public IActionResult GetProduct(Guid id)
+        {
+            var product = _repository.Product.GetProduct(id, trackChanges: false);
+            if (product == null)
             {
-                var products = _repository.Product.GetAllProducts(trackChanges: false);
-                return Ok(products);
+                _logger.LogInfo($"Product with id: {id} doesn't exist in the database");
+                return NotFound();
             }
-            catch (Exception ex)
+            else
             {
-                _logger.LogError($"Something went wrong in the {nameof(GetProducts)} action {ex}");
-                return StatusCode(500, "Internal server error");
+                return Ok(product);
             }
         }
     }
