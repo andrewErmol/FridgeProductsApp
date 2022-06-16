@@ -11,7 +11,11 @@ builder.Services.ConfigureSqlContext(builder.Configuration);
 builder.Services.ConfigureRepositoryManager();
 
 // Add services to the container.
-builder.Services.AddControllers();
+builder.Services.AddControllers(config =>
+{
+    config.RespectBrowserAcceptHeader = true;
+    config.ReturnHttpNotAcceptable = true;
+});
 
 builder.Services.ConfigureCors();
 builder.Services.ConfigureIISIntegration();

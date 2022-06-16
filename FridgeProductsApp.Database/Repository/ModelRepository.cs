@@ -16,5 +16,9 @@ namespace FridgeProductsApp.Database.Repository
         public Model GetModel(Guid modelId, bool trackChanges) =>
             FindByCondition(m => m.Id.Equals(modelId), trackChanges)
             .SingleOrDefault();
+
+        public void CreateModel(Model model) => Create(model);
+
+        public void DeleteModel(Model model) => Delete(model);
     }
 }

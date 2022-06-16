@@ -22,5 +22,9 @@ namespace FridgeProductsApp.Database.Repository
         public IEnumerable<FridgeProduct> GetProductsInsideFridge(Guid fridgeId, bool trackChanges) =>
             FindAll(trackChanges).Where(fp => fp.FridgeId == fridgeId)
             .Include(fp => fp.Fridge).Include(fp => fp.Product).ToList();
+
+        public void CreateFridgeProduct(FridgeProduct fridgeProduct) => Create(fridgeProduct);
+
+        public void DeleteFridgeProduct(FridgeProduct fridgeProduct) => Delete(fridgeProduct);
     }
 }
