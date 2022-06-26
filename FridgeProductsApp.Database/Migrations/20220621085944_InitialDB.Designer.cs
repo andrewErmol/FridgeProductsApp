@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FridgeProductsApp.Database.Migrations
 {
     [DbContext(typeof(FridgeProductsDbContext))]
-    [Migration("20220613082325_InitialData")]
-    partial class InitialData
+    [Migration("20220621085944_InitialDB")]
+    partial class InitialDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

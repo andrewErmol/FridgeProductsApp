@@ -21,5 +21,20 @@ namespace FridgeProductsApp.Database.Repository
         public void CreateFridge(Fridge fridge) => Create(fridge);
 
         public void DeleteFridge(Fridge fridge) => Delete(fridge);
+
+        public IEnumerable<Fridge> GetFridgesByFirstLetterOfModelA(bool trackChanges) =>
+            GetAllFridges(trackChanges).Where(f => f.Model.Name[0] == 'A' || f.Model.Name[0] == 'a');
+
+        public int GetYearOfReleaseForFridgeWithMaxProductsCount()
+        {
+            var param = new Microsoft.Data.SqlClient.SqlParameter
+            {
+                ParameterName = "@year",
+                SqlDbType = System.Data.SqlDbType.Int,
+                Direction = System.Data.ParameterDirection.Output,
+                Size = 50
+            };
+            return (int)ExecuteScalar("dbo.GetYearOfReleaseForFridgeWithMaxProductsCount @year OUT", param);
+        }
     }
 }

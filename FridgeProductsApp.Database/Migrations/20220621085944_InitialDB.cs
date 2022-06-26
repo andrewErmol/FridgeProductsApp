@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace FridgeProductsApp.Database.Migrations
 {
-    public partial class InitialData : Migration
+    public partial class InitialDB : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -145,6 +145,31 @@ namespace FridgeProductsApp.Database.Migrations
                 name: "IX_Fridges_ModelId",
                 table: "Fridges",
                 column: "ModelId");
+
+            migrationBuilder.Sql("CREATE PROCEDURE dbo.DefinitionDefaultQuantity " +
+                "AS BEGIN " +
+                    "Update FridgeProducts SET Quantity = Products.DefaultQuantity " +
+                    "From FridgeProducts " +
+                        "JOIN Products ON FridgeProducts.ProductId = Products.Id " +
+                    "WHERE Quantity = 0 " +
+                "END");
+
+            migrationBuilder.Sql("CREATE PROCEDURE dbo.GetYearOfReleaseForFridgeWithMaxProductsCount " +
+                    "@year INT OUTPUT " +
+                "AS BEGIN " +
+                    "DECLARE @MaxQuantity INT " +
+                    "SELECT @MaxQuantity = MAX(TotalQuantity) " +
+                    "FROM(SELECT SUM(FridgeProducts.Quantity) AS TotalQuantity " +
+                    "FROM FridgeProducts " +
+                        "JOIN Fridges ON FridgeProducts.FridgeId = Fridges.Id " +
+                        "JOIN Models ON Fridges.ModelId = Models.Id " +
+                    "GROUP BY Fridges.Id) AS SumQuantity " +
+                    "SELECT @year = YearOfRelease " +
+                    "FROM Fridges JOIN Models ON Models.Id = Fridges.ModelId " +
+                        "JOIN FridgeProducts ON Fridges.Id = FridgeProducts.FridgeId " +
+                    "GROUP BY Fridges.Id, Models.Name, YearOfRelease " +
+                    "HAVING SUM(FridgeProducts.Quantity) = @MaxQuantity " +
+                "END");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -160,6 +185,10 @@ namespace FridgeProductsApp.Database.Migrations
 
             migrationBuilder.DropTable(
                 name: "Models");
+
+            migrationBuilder.Sql("DROP PROC dbo.DefinitionDefaultQuantity");
+
+            migrationBuilder.Sql("DROP PROC dbo.GetYearOfReleaseForFridgeWithMaxProductsCount");
         }
     }
 }

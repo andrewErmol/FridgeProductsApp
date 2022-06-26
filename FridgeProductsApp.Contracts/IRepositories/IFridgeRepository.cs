@@ -13,5 +13,7 @@ namespace FridgeProductsApp.Contracts.IRepositories
         Fridge GetFridge(Guid fridgeId, bool trackChanges);
         void CreateFridge(Fridge fridge);
         void DeleteFridge(Fridge fridge);
+        IEnumerable<Fridge> GetFridgesByFirstLetterOfModelA(bool trackChanges);
+        int GetYearOfReleaseForFridgeWithMaxProductsCount();
     }
 }

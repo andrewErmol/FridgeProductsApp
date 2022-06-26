@@ -23,7 +23,7 @@ namespace FridgeProductsApp.Domain
                 .ForMember(fp => fp.Quantity, opt => opt.MapFrom(x => x.Quantity));
             CreateMap<FridgeProductForCreationDto, FridgeProduct>();
             CreateMap<FridgeProductForUpdateDto, FridgeProduct>();
-
+            
             CreateMap<ModelForCreationDto, Model>();
             CreateMap<ModelForUpdateDto, Model>();
 

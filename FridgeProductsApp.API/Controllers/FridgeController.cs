@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FridgeProductsApp.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class FridgeController : ControllerBase
     {
@@ -105,6 +105,20 @@ namespace FridgeProductsApp.API.Controllers
             _repository.Save();
 
             return NoContent();
+        }
+
+        [HttpGet]
+        public IActionResult GetYearOfReleaseForFridgeWithMaxProductsCount()
+        {
+            var yearOfRelease = _repository.Fridge.GetYearOfReleaseForFridgeWithMaxProductsCount();
+
+            if (yearOfRelease == 0)
+            {
+                _logger.LogInfo("In the database doesn't exist nodes");
+                return NotFound();
+            }
+
+            return Ok(yearOfRelease);
         }
     }
 }
