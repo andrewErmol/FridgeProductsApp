@@ -1,0 +1,29 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    width: 100%;
+    padding: 15px 5% 15px 5%;
+    box-sizing: border-box;
+    background-color: lightblue;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.home-links {
+    width: 90%;
+    margin-left: 5%;
+}
+
+.home-links > a {
+    display: block;
+    width: 40%;
+    background-color: lightblue;
+    margin-top: 10px;
+    border-radius: 5px;
+    padding: 5px 10px 5px 10px;
+    box-sizing: border-box;
+}

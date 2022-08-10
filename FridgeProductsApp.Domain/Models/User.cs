@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -7,12 +8,9 @@ using System.Threading.Tasks;
 
 namespace FridgeProducts.Domain.Models
 {
-    public class User
+    public class User : IdentityUser
     {
-        [Required(ErrorMessage = "Login is a required field")]
-        public string Login;
-
-        [Required(ErrorMessage = "Password is a required field")]
-        public string Password;
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
     }
 }

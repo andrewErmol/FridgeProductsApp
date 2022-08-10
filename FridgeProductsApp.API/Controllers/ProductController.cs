@@ -3,20 +3,22 @@ using FridgeProducts.Domain.Models;
 using FridgeProductsApp.Contracts;
 using FridgeProductsApp.Contracts.IRepositories;
 using FridgeProductsApp.Domain.DTO.Product;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FridgeProductsApp.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class ProductController : ControllerBase
     {
         private readonly IRepositoryManager _repository;
         private readonly ILoggerManager _logger;
         private readonly IMapper _mapper;
 
-        public ProductController(IRepositoryManager repository, ILoggerManager logger,
+        public ProductController(IRepositoryManager repository, 
+            ILoggerManager logger,
             IMapper mapper)
         {
             _repository = repository;

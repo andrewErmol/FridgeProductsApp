@@ -1,10 +1,11 @@
 ﻿using FridgeProducts.Domain.Models;
 using FridgeProductsApp.Domain.Configuration;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace FridgeProductsApp.Database
 {
-    public class FridgeProductsDbContext : DbContext
+    public class FridgeProductsDbContext : IdentityDbContext<User>
     {
         public FridgeProductsDbContext(DbContextOptions options) : base(options)
         {
@@ -12,11 +13,13 @@ namespace FridgeProductsApp.Database
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            /*base.OnModelCreating(modelBuilder);*/
+            base.OnModelCreating(modelBuilder);
+
             modelBuilder.ApplyConfiguration(new FridgeConfiguration());
             modelBuilder.ApplyConfiguration(new FridgeProductConfiguration());
             modelBuilder.ApplyConfiguration(new ModelConfiguration());
             modelBuilder.ApplyConfiguration(new ProductConfiguration());
+            modelBuilder.ApplyConfiguration(new RoleConfiguration());
         }
 
         public DbSet<Fridge> Fridges { get; set; }

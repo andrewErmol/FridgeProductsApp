@@ -4,6 +4,7 @@ using FridgeProductsApp.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FridgeProductsApp.Database.Migrations
 {
     [DbContext(typeof(FridgeProductsDbContext))]
-    partial class FridgeProductsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220704133339_AddedRolesToDB")]
+    partial class AddedRolesToDB
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

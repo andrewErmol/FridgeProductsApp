@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FridgeProductsApp.Database"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FridgeProductsApp.API", "FridgeProductsApp.API\FridgeProductsApp.API.csproj", "{4C2CA574-C7C5-4712-B3E6-101C98F622E8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FridgeProductsApp.LoggerService", "FridgeProductsApp.LoggerService\FridgeProductsApp.LoggerService.csproj", "{C6FEF3C6-77E0-4C70-B348-6AF34B3FC0F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FridgeProductsApp.LoggerService", "FridgeProductsApp.LoggerService\FridgeProductsApp.LoggerService.csproj", "{C6FEF3C6-77E0-4C70-B348-6AF34B3FC0F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FridgeProductsApp.MVC", "FridgeProductsApp.MVC\FridgeProductsApp.MVC.csproj", "{0AAD6033-F70A-4D6A-800A-91DB0581EE68}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{C6FEF3C6-77E0-4C70-B348-6AF34B3FC0F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C6FEF3C6-77E0-4C70-B348-6AF34B3FC0F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C6FEF3C6-77E0-4C70-B348-6AF34B3FC0F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AAD6033-F70A-4D6A-800A-91DB0581EE68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AAD6033-F70A-4D6A-800A-91DB0581EE68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AAD6033-F70A-4D6A-800A-91DB0581EE68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AAD6033-F70A-4D6A-800A-91DB0581EE68}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

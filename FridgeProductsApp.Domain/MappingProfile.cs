@@ -4,6 +4,7 @@ using FridgeProductsApp.Domain.DTO.Fridge;
 using FridgeProductsApp.Domain.DTO.FridgeProduct;
 using FridgeProductsApp.Domain.DTO.Model;
 using FridgeProductsApp.Domain.DTO.Product;
+using FridgeProductsApp.Domain.DTO.User;
 
 namespace FridgeProductsApp.Domain
 {
@@ -29,6 +30,9 @@ namespace FridgeProductsApp.Domain
 
             CreateMap<ProductForCreationDto, Product>();
             CreateMap<ProductForUpdateDto, Product>();
+
+            CreateMap<UserForRegistrationDto, User>();
+            CreateMap<UserForAuthenticationDto, User>();
         }
     }
 }
