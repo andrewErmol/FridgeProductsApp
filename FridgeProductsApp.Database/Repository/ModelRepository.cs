@@ -1,4 +1,4 @@
-﻿using FridgeProducts.Domain.Models;
+﻿using FridgeProductsApp.Domain.Models;
 using FridgeProductsApp.Contracts.IRepositories;
 
 namespace FridgeProductsApp.Database.Repository

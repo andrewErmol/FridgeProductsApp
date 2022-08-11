@@ -1,4 +1,4 @@
-﻿using FridgeProducts.Domain.Models;
+﻿using FridgeProductsApp.Domain.Models;
 
 namespace FridgeProductsApp.Contracts.IRepositories
 {

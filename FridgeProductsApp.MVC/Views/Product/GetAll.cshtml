@@ -1,0 +1,27 @@
+﻿@model List<Product>
+
+<div>
+     <h3>Products</h3>
+
+     <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>DefaultQuantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in @Model)
+            {
+                <tr>
+                    <td>@product.Id</td>
+                    <td>@product.Name</td>
+                    <td>@product.DefaultQuantity</td>
+                </tr>
+            }
+        </tbody>
+     </table>
+
+     <a class="back-btn" href="Index">Back</a>
+</div>

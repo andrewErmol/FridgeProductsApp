@@ -1,4 +1,4 @@
-﻿using FridgeProducts.Domain.Models;
+﻿using FridgeProductsApp.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

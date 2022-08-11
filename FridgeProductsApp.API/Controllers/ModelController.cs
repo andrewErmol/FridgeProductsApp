@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using FridgeProducts.Domain.Models;
+using FridgeProductsApp.Domain.Models;
 using FridgeProductsApp.Contracts;
 using FridgeProductsApp.Contracts.IRepositories;
 using FridgeProductsApp.Domain.DTO.Model;
@@ -9,9 +9,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FridgeProductsApp.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
-    [Authorize]
+    //[Authorize]
     public class ModelController : ControllerBase
     {
         private readonly IRepositoryManager _repository;

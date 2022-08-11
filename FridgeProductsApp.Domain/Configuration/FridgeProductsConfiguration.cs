@@ -1,4 +1,4 @@
-﻿using FridgeProducts.Domain.Models;
+﻿using FridgeProductsApp.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;

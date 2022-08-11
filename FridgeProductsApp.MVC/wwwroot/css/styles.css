@@ -13,17 +13,85 @@ header {
     justify-content: center;
 }
 
-.home-links {
-    width: 90%;
-    margin-left: 5%;
+a {
+    text-decoration: none;
+    cursor: pointer;
 }
 
-.home-links > a {
+.main-container {
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 20px;
+}
+
+.links-block {
+    width: 100%;
+}
+
+.links-block > a {
     display: block;
-    width: 40%;
+    width: 100%;
     background-color: lightblue;
+    color: black;
     margin-top: 10px;
     border-radius: 5px;
     padding: 5px 10px 5px 10px;
     box-sizing: border-box;
+}
+
+.back-btn {
+    display: block;
+    background-color: #1B4C5E;
+    color: white;
+    margin-top: 10px;
+    border-radius: 5px;
+    padding: 5px 10px 5px 10px;
+    box-sizing: border-box;
+}
+
+.get-form {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.simple-input {
+    width: 300px;
+    font-size: 105%;
+}
+
+.submit-btn {
+    padding: 5px 10px 5px 10px;
+    background-color: lightblue;
+    border: none;
+    border-radius: 5px;
+    margin-left: 20px;
+}
+
+.table {
+    border: 1px solid #eee;
+    table-layout: fixed;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.table th {
+	font-weight: bold;
+	padding: 5px;
+	background: lightblue;
+	border: 1px solid #dddddd;
+}
+
+.table td{
+	padding: 5px 10px;
+	border: 1px solid #eee;
+	text-align: left;
+}
+
+.table tbody tr:nth-child(odd){
+	background: #fff;
+}
+
+.table tbody tr:nth-child(even){
+	background: #F7F7F7;
 }

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FridgeProducts.Domain.Models
+namespace FridgeProductsApp.Domain.Models
 {
     public class User : IdentityUser
     {

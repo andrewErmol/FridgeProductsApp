@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using FridgeProducts.Domain.Models;
+using FridgeProductsApp.Domain.Models;
 using FridgeProductsApp.Domain.DTO.Fridge;
 using FridgeProductsApp.Domain.DTO.FridgeProduct;
 using FridgeProductsApp.Domain.DTO.Model;
