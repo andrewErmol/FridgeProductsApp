@@ -83,8 +83,8 @@ namespace FridgeProductsApp.API.Controllers
             return NoContent();
         }
 
-        [HttpPut("{id}")]
-        public IActionResult UpdateModel(Guid id, [FromBody]ModelForUpdateDto model)
+        [HttpPut]
+        public IActionResult UpdateModel([FromBody]ModelForUpdateDto model)
         {
             if (model == null)
             {
@@ -92,11 +92,11 @@ namespace FridgeProductsApp.API.Controllers
                 return BadRequest("ModelForUpdateDto object is null");
             }
 
-            var modelEntity = _repository.Model.GetModel(id, trackChanges: true);
+            var modelEntity = _repository.Model.GetModel(model.Id, trackChanges: true);
 
             if (modelEntity == null)
             {
-                _logger.LogInfo($"Model with id: {id} doesn't exist in the database.");
+                _logger.LogInfo($"Model with id: {model.Id} doesn't exist in the database.");
                 return NotFound();
             }
 

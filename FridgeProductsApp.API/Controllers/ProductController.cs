@@ -82,8 +82,8 @@ namespace FridgeProductsApp.API.Controllers
             return NoContent();
         }
 
-        [HttpPut("{id}")]
-        public IActionResult UpdateProduct(Guid id, [FromBody]ProductForUpdateDto product)
+        [HttpPut]
+        public IActionResult UpdateProduct([FromBody]ProductForUpdateDto product)
         {
             if (product == null)
             {
@@ -91,11 +91,11 @@ namespace FridgeProductsApp.API.Controllers
                 return BadRequest("ProductForUpdateDto object is null");
             }
 
-            var productEntity = _repository.Product.GetProduct(id, trackChanges: true);
+            var productEntity = _repository.Product.GetProduct(product.Id, trackChanges: true);
 
             if (productEntity == null)
             {
-                _logger.LogInfo($"Product with id: {id} doesn't exist in the database.");
+                _logger.LogInfo($"Product with id: {product.Id} doesn't exist in the database.");
                 return NotFound();
             }
 

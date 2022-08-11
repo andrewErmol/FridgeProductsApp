@@ -1,0 +1,40 @@
+﻿@model FridgeForCreationDto
+
+<div>
+    <h3>Create Fridge</h3>
+
+    <form method="post" asp-action="Create">
+        <div class="changing-field">
+            <label asp-for="Name"></label>
+            <div>
+                <input class="simple-input" asp-for="Name"/>
+                <span class="error-mes" asp-validation-for="Name"></span>
+            </div>
+        </div>
+
+        <div class="changing-field">
+            <label asp-for="OwnerName">Owner Name</label>
+            <div>
+                <input class="simple-input" asp-for="OwnerName"/>
+                <span class="error-mes" asp-validation-for="OwnerName"></span>
+            </div>
+        </div>
+
+        <div class="changing-field">
+            <label asp-for="ModelId">Model Id</label>
+            <div>
+                <input class="simple-input" asp-for="ModelId"/>
+                <span class="error-mes" asp-validation-for="ModelId"></span>
+            </div>
+        </div>
+
+        <button class="creation-btn" type="submit">Create</button>
+    </form>
+
+    <a class="back-btn" href="Index">Back</a>
+
+    @if (ViewData["Message"] != null)
+    {
+        <h5>@ViewData["Message"]</h5>
+    }
+</div>

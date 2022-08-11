@@ -1,5 +1,6 @@
 ﻿using Flurl.Http;
 using Flurl.Http.Configuration;
+using FridgeProductsApp.Domain.DTO.Product;
 using FridgeProductsApp.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -59,6 +60,74 @@ namespace FridgeProductsApp.MVC.Controllers
                 ViewData["Message"] = "Product not found!";
                 return View();
             }
+        }
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(ProductForCreationDto product)
+        {
+            try
+            {
+                await _flurlClient.Request("CreateProduct/").PostJsonAsync(product);
+
+                ViewData["Message"] = $"Product was created";
+            }
+            catch
+            {
+                ViewData["Message"] = null;
+            }
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult Update()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Update(ProductForUpdateDto product)
+        {
+            try
+            {
+                await _flurlClient.Request("UpdateProduct/").PutJsonAsync(product);
+
+                ViewData["Message"] = $"Product {product.Name} was updated";
+            }
+            catch
+            {
+                ViewData["Message"] = null;
+            }
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult Delete()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            try
+            {
+                await _flurlClient.Request($"DeleteProduct/{id}").DeleteAsync();
+
+                ViewData["Message"] = $"Product with id = {id} was deleted";
+            }
+            catch
+            {
+                ViewData["Message"] = "Product not found!";
+            }
+            return View();
         }
     }
 }

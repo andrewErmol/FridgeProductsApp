@@ -1,0 +1,18 @@
+﻿<div>
+    <h3>Delete Product</h3>
+
+    <form asp-action="Delete" method="post">
+
+        <input class="simple-input" type="text" name="id" placeholder="Id"/>
+
+        <br />
+        <button class="creation-btn" type="submit">Delete</button>
+    </form>  
+
+    <a class="back-btn" href="Index">Back</a>
+
+    @if (ViewData["Message"] != null)
+    {
+        <h5>@ViewData["Message"]</h5>
+    }
+</div>

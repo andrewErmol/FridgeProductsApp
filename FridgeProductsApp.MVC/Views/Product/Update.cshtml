@@ -1,0 +1,40 @@
+﻿@model ProductForUpdateDto
+
+<div>
+    <h3>Update Product</h3>
+
+    <form method="post" asp-action="Update">
+        <div class="changing-field">
+            <label asp-for="Id"></label>
+            <div>
+                <input class="simple-input" asp-for="Id"/>
+                <span class="error-mes" asp-validation-for="Id"></span>
+            </div>
+        </div>
+
+        <div class="changing-field">
+            <label asp-for="Name">Name</label>
+            <div>
+                <input class="simple-input" asp-for="Name"/>
+                <span class="error-mes" asp-validation-for="Name"></span>
+            </div>
+        </div>
+
+        <div class="changing-field">
+            <label asp-for="DefaultQuantity">Default quantity</label>
+            <div>
+                <input class="simple-input" asp-for="DefaultQuantity"/>
+                <span class="error-mes" asp-validation-for="DefaultQuantity"></span>
+            </div>
+        </div>
+
+        <button class="creation-btn" type="submit">Update</button>
+    </form>
+
+    <a class="back-btn" href="Index">Back</a>
+
+    @if (ViewData["Message"] != null)
+    {
+        <h5>@ViewData["Message"]</h5>
+    }
+</div>

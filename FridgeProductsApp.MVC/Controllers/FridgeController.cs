@@ -61,5 +61,73 @@ namespace FridgeProductsApp.MVC.Controllers
                 return View();
             }
         }
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(FridgeForCreationDto fridge)
+        {
+            try
+            {
+                await _flurlClient.Request("CreateFridge/").PostJsonAsync(fridge);
+
+                ViewData["Message"] = $"Fridge {fridge.Name} was created";
+            }
+            catch
+            {
+                ViewData["Message"] = null;
+            }
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult Update()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Update(FridgeForUpdateDto fridge)
+        {
+            try
+            {
+                await _flurlClient.Request("UpdateFridge/").PutJsonAsync(fridge);
+
+                ViewData["Message"] = $"Fridge {fridge.Name} was updated";
+            }
+            catch
+            {
+                ViewData["Message"] = null;
+            }
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult Delete()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            try
+            {
+                await _flurlClient.Request($"DeleteFridge/{id}").DeleteAsync();
+
+                ViewData["Message"] = $"Fridge with id = {id} was deleted";
+            }
+            catch
+            {
+                ViewData["Message"] = "Fridge not found!";
+            }
+            return View();
+        }
     }
 }

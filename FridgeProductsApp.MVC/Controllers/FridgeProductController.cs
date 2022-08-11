@@ -60,5 +60,73 @@ namespace FridgeProductsApp.MVC.Controllers
                 return View();
             }
         }
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(FridgeProductForCreationDto fridgeProduct)
+        {
+            try
+            {
+                await _flurlClient.Request("CreateFridgeProduct/").PostJsonAsync(fridgeProduct);
+
+                ViewData["Message"] = $"FridgeProduct was created";
+            }
+            catch
+            {
+                ViewData["Message"] = null;
+            }
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult Update()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Update(FridgeProductForUpdateDto fridgeProduct)
+        {
+            try
+            {
+                await _flurlClient.Request("UpdateFridgeProduct/").PutJsonAsync(fridgeProduct);
+
+                ViewData["Message"] = $"FridgeProduct with Id = {fridgeProduct.Id} was updated";
+            }
+            catch
+            {
+                ViewData["Message"] = null;
+            }
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult Delete()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            try
+            {
+                await _flurlClient.Request($"DeleteFridgeProduct/{id}").DeleteAsync();
+
+                ViewData["Message"] = $"FridgeProduct with Id = {id} was deleted";
+            }
+            catch
+            {
+                ViewData["Message"] = "FridgeProduct not found!";
+            }
+            return View();
+        }
     }
 }

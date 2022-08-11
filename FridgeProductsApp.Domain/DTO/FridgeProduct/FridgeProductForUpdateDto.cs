@@ -9,6 +9,9 @@ namespace FridgeProductsApp.Domain.DTO.FridgeProduct
 {
     public class FridgeProductForUpdateDto
     {
+        [Required(ErrorMessage = "FridgeProducts Id is a required field")]
+        public Guid Id { get; set; }
+
         [Required(ErrorMessage = "Product_id is a required field")]
         public Guid ProductId { get; set; }
 
