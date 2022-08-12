@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using FridgeProductsApp.Domain.Models;
 using FridgeProductsApp.Contracts;
 using FridgeProductsApp.Contracts.IRepositories;
 using FridgeProductsApp.Domain.DTO.Fridge;
+using FridgeProductsApp.Domain.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,7 +17,7 @@ namespace FridgeProductsApp.API.Controllers
         private readonly ILoggerManager _logger;
         private readonly IMapper _mapper;
 
-        public FridgeController(IRepositoryManager repository, 
+        public FridgeController(IRepositoryManager repository,
             ILoggerManager logger,
             IMapper mapper)
         {
@@ -52,9 +52,9 @@ namespace FridgeProductsApp.API.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateFridge([FromBody]FridgeForCreationDto fridge)
+        public IActionResult CreateFridge([FromBody] FridgeForCreationDto fridge)
         {
-            if(fridge == null)
+            if (fridge == null)
             {
                 _logger.LogError("FridgeForCreationDto object sent from client is null.");
                 return BadRequest("FridgeForCreationDto object is null");
@@ -88,7 +88,7 @@ namespace FridgeProductsApp.API.Controllers
         }
 
         [HttpPut]
-        public IActionResult UpdateFridge([FromBody]FridgeForUpdateDto fridge)
+        public IActionResult UpdateFridge([FromBody] FridgeForUpdateDto fridge)
         {
             if (fridge == null)
             {

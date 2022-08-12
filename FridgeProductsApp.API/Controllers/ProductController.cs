@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using FridgeProductsApp.Domain.Models;
 using FridgeProductsApp.Contracts;
 using FridgeProductsApp.Contracts.IRepositories;
 using FridgeProductsApp.Domain.DTO.Product;
+using FridgeProductsApp.Domain.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,7 +17,7 @@ namespace FridgeProductsApp.API.Controllers
         private readonly ILoggerManager _logger;
         private readonly IMapper _mapper;
 
-        public ProductController(IRepositoryManager repository, 
+        public ProductController(IRepositoryManager repository,
             ILoggerManager logger,
             IMapper mapper)
         {
@@ -49,7 +49,7 @@ namespace FridgeProductsApp.API.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateProduct([FromBody]ProductForCreationDto product)
+        public IActionResult CreateProduct([FromBody] ProductForCreationDto product)
         {
             if (product == null)
             {
@@ -83,7 +83,7 @@ namespace FridgeProductsApp.API.Controllers
         }
 
         [HttpPut]
-        public IActionResult UpdateProduct([FromBody]ProductForUpdateDto product)
+        public IActionResult UpdateProduct([FromBody] ProductForUpdateDto product)
         {
             if (product == null)
             {

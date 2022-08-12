@@ -1,13 +1,11 @@
 ﻿using AutoMapper;
-using FridgeProductsApp.Domain.Models;
 using FridgeProductsApp.Contracts;
 using FridgeProductsApp.Contracts.IRepositories;
 using FridgeProductsApp.Domain.DTO.Fridge;
 using FridgeProductsApp.Domain.DTO.FridgeProduct;
+using FridgeProductsApp.Domain.Models;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
 
 namespace FridgeProductsApp.API.Controllers
 {
@@ -20,7 +18,7 @@ namespace FridgeProductsApp.API.Controllers
         private readonly ILoggerManager _logger;
         private readonly IMapper _mapper;
 
-        public FridgeProductController(IRepositoryManager repository, 
+        public FridgeProductController(IRepositoryManager repository,
             ILoggerManager logger,
             IMapper mapper)
         {
@@ -71,7 +69,7 @@ namespace FridgeProductsApp.API.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateFridgeProduct([FromBody]FridgeProductForCreationDto fridgeProduct)
+        public IActionResult CreateFridgeProduct([FromBody] FridgeProductForCreationDto fridgeProduct)
         {
             if (fridgeProduct == null)
             {
@@ -94,7 +92,7 @@ namespace FridgeProductsApp.API.Controllers
         public IActionResult DeleteFridgeProduct(Guid id)
         {
             var fridgeProduct = _repository.FridgeProduct.GetFridgeProduct(id, trackChanges: false);
-            
+
             if (fridgeProduct == null)
             {
                 _logger.LogInfo($"Fridge with id: {id} doesn't exist in the database.");
@@ -108,7 +106,7 @@ namespace FridgeProductsApp.API.Controllers
         }
 
         [HttpPut]
-        public IActionResult UpdateFridgeProduct([FromBody]FridgeProductForUpdateDto fridgeProduct)
+        public IActionResult UpdateFridgeProduct([FromBody] FridgeProductForUpdateDto fridgeProduct)
         {
             if (fridgeProduct == null)
             {

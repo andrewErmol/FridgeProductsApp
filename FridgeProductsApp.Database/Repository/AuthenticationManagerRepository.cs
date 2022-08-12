@@ -1,6 +1,6 @@
-﻿using FridgeProductsApp.Domain.Models;
-using FridgeProductsApp.Contracts.IRepositories;
+﻿using FridgeProductsApp.Contracts.IRepositories;
 using FridgeProductsApp.Domain.DTO.User;
+using FridgeProductsApp.Domain.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -54,7 +54,7 @@ namespace FridgeProductsApp.Database.Repository
             };
 
             var roles = await _userManager.GetRolesAsync(_user);
-            foreach(var role in roles)
+            foreach (var role in roles)
             {
                 claims.Add(new Claim(ClaimTypes.Role, role));
             }

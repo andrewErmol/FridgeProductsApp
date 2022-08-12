@@ -1,11 +1,6 @@
-﻿using FridgeProductsApp.Domain.Models;
-using FridgeProductsApp.Domain.DTO.Fridge;
+﻿using FridgeProductsApp.Domain.DTO.Fridge;
 using FridgeProductsApp.Domain.DTO.FridgeProduct;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using FridgeProductsApp.Domain.Models;
 
 namespace FridgeProductsApp.Contracts.IRepositories
 {

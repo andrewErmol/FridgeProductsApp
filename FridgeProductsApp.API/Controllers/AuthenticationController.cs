@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using FridgeProductsApp.Domain.Models;
 using FridgeProductsApp.Contracts;
 using FridgeProductsApp.Contracts.IRepositories;
 using FridgeProductsApp.Domain.DTO.User;
+using FridgeProductsApp.Domain.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,10 +18,10 @@ namespace FridgeProductsApp.API.Controllers
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly IAuthenticationManagerRepository _authManager;
 
-        public AuthenticationController (ILoggerManager logger, 
-            IMapper mapper, 
+        public AuthenticationController(ILoggerManager logger,
+            IMapper mapper,
             UserManager<User> userManager,
-            RoleManager<IdentityRole> roleManager, 
+            RoleManager<IdentityRole> roleManager,
             IAuthenticationManagerRepository authManager)
         {
             _logger = logger;
@@ -50,9 +50,9 @@ namespace FridgeProductsApp.API.Controllers
         {
             var user = _mapper.Map<User>(userForRegistration);
 
-            foreach(string roleName in userForRegistration.Roles)
+            foreach (string roleName in userForRegistration.Roles)
             {
-                if (! await _roleManager.RoleExistsAsync(roleName))
+                if (!await _roleManager.RoleExistsAsync(roleName))
                 {
                     _logger.LogError("This role or roles doesn't exist.");
                     return BadRequest("Entered role(s) doesn't exist");
@@ -73,7 +73,7 @@ namespace FridgeProductsApp.API.Controllers
             await _userManager.AddToRolesAsync(user, userForRegistration.Roles);
 
             return StatusCode(201);
-            
+
         }
     }
 }

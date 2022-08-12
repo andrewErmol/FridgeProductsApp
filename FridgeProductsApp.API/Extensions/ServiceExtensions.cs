@@ -1,8 +1,8 @@
-﻿using FridgeProductsApp.Domain.Models;
-using FridgeProductsApp.Contracts;
+﻿using FridgeProductsApp.Contracts;
 using FridgeProductsApp.Contracts.IRepositories;
 using FridgeProductsApp.Database;
 using FridgeProductsApp.Database.Repository;
+using FridgeProductsApp.Domain.Models;
 using FridgeProductsApp.LoggerService;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -44,9 +44,9 @@ namespace FridgeProductsApp.API.Extensions
         {
             services.AddScoped<RoleManager<IdentityRole>>();
             services.AddScoped<IRepositoryManager, RepositoryManager>();
-            services.AddScoped<IAuthenticationManagerRepository, AuthenticationManagerRepository>(); 
+            services.AddScoped<IAuthenticationManagerRepository, AuthenticationManagerRepository>();
         }
-            
+
 
         public static void ConfigureIdentity(this IServiceCollection services)
         {

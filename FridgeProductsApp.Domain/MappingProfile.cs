@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
-using FridgeProductsApp.Domain.Models;
 using FridgeProductsApp.Domain.DTO.Fridge;
 using FridgeProductsApp.Domain.DTO.FridgeProduct;
 using FridgeProductsApp.Domain.DTO.Model;
 using FridgeProductsApp.Domain.DTO.Product;
 using FridgeProductsApp.Domain.DTO.User;
+using FridgeProductsApp.Domain.Models;
 
 namespace FridgeProductsApp.Domain
 {
@@ -24,7 +24,7 @@ namespace FridgeProductsApp.Domain
                 .ForMember(fp => fp.Quantity, opt => opt.MapFrom(x => x.Quantity));
             CreateMap<FridgeProductForCreationDto, FridgeProduct>();
             CreateMap<FridgeProductForUpdateDto, FridgeProduct>();
-            
+
             CreateMap<ModelForCreationDto, Model>();
             CreateMap<ModelForUpdateDto, Model>();
 

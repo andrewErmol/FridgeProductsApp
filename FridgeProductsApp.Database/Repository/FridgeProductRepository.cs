@@ -1,7 +1,7 @@
-﻿using FridgeProductsApp.Domain.Models;
-using FridgeProductsApp.Contracts.IRepositories;
+﻿using FridgeProductsApp.Contracts.IRepositories;
 using FridgeProductsApp.Domain.DTO.Fridge;
 using FridgeProductsApp.Domain.DTO.FridgeProduct;
+using FridgeProductsApp.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace FridgeProductsApp.Database.Repository
@@ -13,7 +13,7 @@ namespace FridgeProductsApp.Database.Repository
         {
         }
 
-        public IEnumerable<FridgeProduct> GetAllFridgesProducts(bool trackChanges) => 
+        public IEnumerable<FridgeProduct> GetAllFridgesProducts(bool trackChanges) =>
             FindAll(trackChanges).Include(fp => fp.Fridge).Include(fp => fp.Product).ToList();
 
         public FridgeProduct GetFridgeProduct(Guid fridgeProductId, bool trackChanges) =>
@@ -35,12 +35,12 @@ namespace FridgeProductsApp.Database.Repository
 
             List<FridgeProduct> fridgeProducts = FindAll(trackChanges).Include(fp => fp.Fridge).ThenInclude(fr => fr.Model).ToList();
 
-            for(int i = 0; i < fridgeProducts.Count; i++)
+            for (int i = 0; i < fridgeProducts.Count; i++)
             {
                 bool isExist = false;
                 int j = 0;
 
-                for(j = 0; j < allFridgesWithQuantityProductsInsideDto.Count; j++)
+                for (j = 0; j < allFridgesWithQuantityProductsInsideDto.Count; j++)
                 {
                     if (fridgeProducts[i].FridgeId == allFridgesWithQuantityProductsInsideDto[j].FridgeId)
                     {

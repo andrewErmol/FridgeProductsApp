@@ -1,10 +1,9 @@
 ﻿using AutoMapper;
-using FridgeProductsApp.Domain.Models;
 using FridgeProductsApp.Contracts;
 using FridgeProductsApp.Contracts.IRepositories;
 using FridgeProductsApp.Domain.DTO.Model;
+using FridgeProductsApp.Domain.Models;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FridgeProductsApp.API.Controllers
@@ -18,7 +17,7 @@ namespace FridgeProductsApp.API.Controllers
         private readonly ILoggerManager _logger;
         private readonly IMapper _mapper;
 
-        public ModelController(IRepositoryManager repository, 
+        public ModelController(IRepositoryManager repository,
             ILoggerManager logger,
             IMapper mapper)
         {
@@ -50,7 +49,7 @@ namespace FridgeProductsApp.API.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateModel([FromBody]ModelForCreationDto model)
+        public IActionResult CreateModel([FromBody] ModelForCreationDto model)
         {
             if (model == null)
             {
@@ -63,7 +62,7 @@ namespace FridgeProductsApp.API.Controllers
             _repository.Model.CreateModel(modelToReturn);
             _repository.Save();
 
-            return CreatedAtRoute("ModelId", new {id = modelToReturn.Id}, modelToReturn);
+            return CreatedAtRoute("ModelId", new { id = modelToReturn.Id }, modelToReturn);
         }
 
         [HttpDelete("{id}")]
@@ -84,7 +83,7 @@ namespace FridgeProductsApp.API.Controllers
         }
 
         [HttpPut]
-        public IActionResult UpdateModel([FromBody]ModelForUpdateDto model)
+        public IActionResult UpdateModel([FromBody] ModelForUpdateDto model)
         {
             if (model == null)
             {

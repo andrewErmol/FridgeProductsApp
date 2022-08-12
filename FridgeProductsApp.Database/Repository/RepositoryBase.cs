@@ -8,7 +8,7 @@ namespace FridgeProductsApp.Database.Repository
     public abstract class RepositoryBase<T> : IRepositoryBase<T> where T : class
     {
         protected FridgeProductsDbContext FridgeProductsDbContext;
-        
+
         public RepositoryBase(FridgeProductsDbContext fridgeProductsDbContext)
         {
             FridgeProductsDbContext = fridgeProductsDbContext;
@@ -37,7 +37,7 @@ namespace FridgeProductsApp.Database.Repository
         public void Update(T entity) => FridgeProductsDbContext.Set<T>().Update(entity);
 
         public void Delete(T entity) => FridgeProductsDbContext.Set<T>().Remove(entity);
-        
+
         public object ExecuteScalar(string sqlQuery, SqlParameter param)
         {
             FridgeProductsDbContext.Database.ExecuteSqlRaw(sqlQuery, param);

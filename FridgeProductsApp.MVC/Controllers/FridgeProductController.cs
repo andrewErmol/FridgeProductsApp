@@ -48,7 +48,7 @@ namespace FridgeProductsApp.MVC.Controllers
             {
                 ViewData["Message"] = "Fridge product not found!";
                 return View();
-            }            
+            }
         }
 
         [HttpGet]
@@ -276,6 +276,6 @@ namespace FridgeProductsApp.MVC.Controllers
                 ViewData["Message"] = "Product not found!";
                 return View();
             }
-        }        
+        }
     }
 }

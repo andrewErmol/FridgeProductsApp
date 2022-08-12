@@ -1,5 +1,5 @@
-﻿using FridgeProductsApp.Domain.Models;
-using FridgeProductsApp.Domain.Configuration;
+﻿using FridgeProductsApp.Domain.Configuration;
+using FridgeProductsApp.Domain.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 

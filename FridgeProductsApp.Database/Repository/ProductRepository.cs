@@ -1,6 +1,5 @@
-﻿using FridgeProductsApp.Domain.Models;
-using FridgeProductsApp.Contracts.IRepositories;
-using Microsoft.EntityFrameworkCore;
+﻿using FridgeProductsApp.Contracts.IRepositories;
+using FridgeProductsApp.Domain.Models;
 
 namespace FridgeProductsApp.Database.Repository
 {

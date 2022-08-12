@@ -1,7 +1,6 @@
 ﻿using FridgeProductsApp.Contracts;
 using FridgeProductsApp.Domain.ErrorModel;
 using Microsoft.AspNetCore.Diagnostics;
-using Microsoft.AspNetCore.Http;
 using System.Net;
 
 namespace FridgeProductsApp.API.Extensions

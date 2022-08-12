@@ -1,4 +1,3 @@
-using AutoMapper;
 using FridgeProductsApp.API.Extensions;
 using FridgeProductsApp.Contracts;
 using FridgeProductsApp.Domain;
