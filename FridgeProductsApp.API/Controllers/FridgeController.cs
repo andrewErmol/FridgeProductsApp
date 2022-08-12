@@ -10,7 +10,7 @@ namespace FridgeProductsApp.API.Controllers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
-    //[Authorize]
+    [Authorize]
     public class FridgeController : ControllerBase
     {
         private readonly IRepositoryManager _repository;
@@ -121,7 +121,7 @@ namespace FridgeProductsApp.API.Controllers
                 return NotFound();
             }
 
-            return Ok(yearOfRelease);
+            return Ok($"Year of release for fridge with max products count inside fridge: {yearOfRelease}");
         }
     }
 }

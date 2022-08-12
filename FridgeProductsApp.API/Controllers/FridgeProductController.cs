@@ -13,7 +13,7 @@ namespace FridgeProductsApp.API.Controllers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
-    //[Authorize]
+    [Authorize]
     public class FridgeProductController : ControllerBase
     {
         private readonly IRepositoryManager _repository;
@@ -161,7 +161,7 @@ namespace FridgeProductsApp.API.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetFridgesWithQuantityLessThanDeaultQuantity()
+        public IActionResult GetFridgesWithQuantityLessThanDefaultQuantity()
         {
             var allFridges = _repository.Fridge.GetAllFridges(false);
             var fridges = _repository.FridgeProduct.GetFridgeProductsWithQuantityLessThanDefaultQuantity(allFridges, trackChanges: false);
@@ -178,7 +178,7 @@ namespace FridgeProductsApp.API.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetFridgesWithQuantityMoreThanDeaultQuantity()
+        public IActionResult GetFridgesWithQuantityMoreThanDefaultQuantity()
         {
             var allFridges = _repository.Fridge.GetAllFridges(false);
             var fridges = _repository.FridgeProduct.GetFridgeProductsWithQuantityMoreThanDefaultQuantity(allFridges, trackChanges: false);

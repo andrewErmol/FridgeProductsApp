@@ -11,7 +11,7 @@ namespace FridgeProductsApp.API.Controllers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
-    //[Authorize]
+    [Authorize]
     public class ModelController : ControllerBase
     {
         private readonly IRepositoryManager _repository;

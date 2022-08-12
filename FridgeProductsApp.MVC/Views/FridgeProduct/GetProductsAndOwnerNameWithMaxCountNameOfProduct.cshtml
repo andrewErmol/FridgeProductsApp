@@ -1,0 +1,34 @@
+﻿@model ProductsAndOwnerNameDto
+
+<div>
+    @if (ViewData["Message"] != null)
+    {
+        <h5 style="color: red">@ViewData["Message"]</h5>
+    }
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Owner Name</th>
+                <th>Fridge Name</th>
+                <th>Products</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Model.Id</td>
+                <td>@Model.OwnerName</td>
+                <td>@Model.FridgeName</td>
+                <td>
+                    @foreach (var product in @Model.Products)
+                    {
+                        @product<br />
+                    }
+                </td>
+            </tr>
+        </tbody>
+        </table>
+
+     <a class="back-btn" href="Index">Back</a>
+</div>

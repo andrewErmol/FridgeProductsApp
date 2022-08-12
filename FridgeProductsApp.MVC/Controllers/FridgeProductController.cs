@@ -1,10 +1,14 @@
 ﻿using Flurl.Http;
 using Flurl.Http.Configuration;
+using FridgeProductsApp.Domain.DTO.Fridge;
 using FridgeProductsApp.Domain.DTO.FridgeProduct;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FridgeProductsApp.MVC.Controllers
 {
+    [Route("[controller]/[action]/")]
+    [Authorize]
     public class FridgeProductController : Controller
     {
         private readonly IFlurlClient _flurlClient;
@@ -30,12 +34,21 @@ namespace FridgeProductsApp.MVC.Controllers
             return View();
         }
 
+        #region CRUD
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var result = await _flurlClient.Request("GetAllFridgesProducts").GetJsonAsync<List<FridgeProductDto>>();
+            try
+            {
+                var result = await _flurlClient.Request("GetAllFridgesProducts").GetJsonAsync<List<FridgeProductDto>>();
 
-            return View(result);
+                return View(result);
+            }
+            catch
+            {
+                ViewData["Message"] = "Fridge product not found!";
+                return View();
+            }            
         }
 
         [HttpGet]
@@ -43,7 +56,6 @@ namespace FridgeProductsApp.MVC.Controllers
         {
             return View();
         }
-
         [HttpPost]
         public async Task<IActionResult> Get(Guid id)
         {
@@ -128,5 +140,142 @@ namespace FridgeProductsApp.MVC.Controllers
             }
             return View();
         }
+        #endregion
+
+        [HttpGet]
+        public IActionResult GetProductsInsideFridge()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> GetProductsInsideFridge(Guid fridgeId)
+        {
+            try
+            {
+                var result = await _flurlClient.Request($"GetProductsInsideFridge/{fridgeId}").GetJsonAsync<List<FridgeProductDto>>();
+
+                ViewData["Message"] = null;
+                return View(result);
+            }
+            catch
+            {
+                ViewData["Message"] = "Product not found!";
+                return View();
+            }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAllFridgesWithProductsQuantity()
+        {
+            try
+            {
+                var result = await _flurlClient.Request("GetAllFridgesWithProductsQuantity").GetJsonAsync<List<AllFridgesWithQuantityProductsInsideDto>>();
+
+                return View(result);
+            }
+            catch
+            {
+                ViewData["Message"] = "Fridge product not found!";
+                return View();
+            }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetProductsInsideFridgesByFirstLetterOfModelA()
+        {
+            try
+            {
+                var result = await _flurlClient.Request("GetProductsInsideFridgesByFirstLetterOfModelA").GetJsonAsync<List<FridgeProductDto>>();
+
+                return View(result);
+            }
+            catch
+            {
+                ViewData["Message"] = "Fridge product not found!";
+                return View();
+            }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> DefinitionDefaultQuantity()
+        {
+            try
+            {
+                await _flurlClient.Request($"DefinitionDefaultQuantity/").PostAsync();
+
+                ViewData["Message"] = "Null values ​​of products are replaced";
+                return View();
+            }
+            catch
+            {
+                ViewData["Message"] = "Nothing not found!";
+                return View();
+            }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetFridgesWithQuantityLessThanDefaultQuantity()
+        {
+            try
+            {
+                var result = await _flurlClient.Request("GetFridgesWithQuantityLessThanDefaultQuantity").GetJsonAsync<List<FridgeDto>>();
+
+                return View("GetFridgesWithQuantityLessOrMoreThanDefaultQuantity", result);
+            }
+            catch
+            {
+                ViewData["Message"] = "Fridge not found!";
+                return View();
+            }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetFridgesWithQuantityMoreThanDefaultQuantity()
+        {
+            try
+            {
+                var result = await _flurlClient.Request("GetFridgesWithQuantityMoreThanDefaultQuantity").GetJsonAsync<List<FridgeDto>>();
+
+                return View("GetFridgesWithQuantityLessOrMoreThanDefaultQuantity", result);
+            }
+            catch
+            {
+                ViewData["Message"] = "Fridge not found!";
+                return View();
+            }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetFridgeProductsWithQuantityNameOfProductsWithQuantityMoreThanDefaultQuantity()
+        {
+            try
+            {
+                var result = await _flurlClient.Request("GetFridgeProductsWithQuantityNameOfProductsWithQuantityMoreThanDefaultQuantity").GetJsonAsync<List<FridgeWithQuantityNameOfProductsDto>>();
+
+                return View("GetFridgeProductsWithQuantityNameOfProductsWithQuantityMoreThanDefaultQuantity", result);
+            }
+            catch
+            {
+                ViewData["Message"] = "Fridge not found!";
+                return View();
+            }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetProductsAndOwnerNameWithMaxCountNameOfProduct()
+        {
+            try
+            {
+                var result = await _flurlClient.Request("GetProductsAndOwnerNameWithMaxCountNameOfProduct").GetJsonAsync<ProductsAndOwnerNameDto>();
+
+                return View(result);
+            }
+            catch
+            {
+                ViewData["Message"] = "Product not found!";
+                return View();
+            }
+        }        
     }
 }

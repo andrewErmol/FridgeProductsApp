@@ -1,11 +1,13 @@
 ﻿using Flurl.Http;
 using Flurl.Http.Configuration;
 using FridgeProductsApp.Domain.DTO.Fridge;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FridgeProductsApp.MVC.Controllers
 {
     [Route("[controller]/[action]/")]
+    [Authorize]
     public class FridgeController : Controller
     {
         private readonly IFlurlClient _flurlClient;
@@ -31,12 +33,21 @@ namespace FridgeProductsApp.MVC.Controllers
             return View();
         }
 
+        #region CRUD
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var result = await _flurlClient.Request("GetAllFridges").GetJsonAsync<List<FridgeDto>>();
+            try
+            {
+                var result = await _flurlClient.Request("GetAllFridges").GetJsonAsync<List<FridgeDto>>();
 
-            return View(result);
+                return View(result);
+            }
+            catch
+            {
+                ViewData["Message"] = "Fridge not found!";
+                return View();
+            }
         }
 
         [HttpGet]
@@ -128,6 +139,25 @@ namespace FridgeProductsApp.MVC.Controllers
                 ViewData["Message"] = "Fridge not found!";
             }
             return View();
+        }
+        #endregion
+
+        [HttpGet]
+        public async Task<IActionResult> GetYearOfReleaseForFridgeWithMaxProductsCount()
+        {
+            try
+            {
+                var result = await _flurlClient.Request("GetYearOfReleaseForFridgeWithMaxProductsCount").GetStringAsync();
+
+                ViewData["Message"] = result;
+
+                return View();
+            }
+            catch
+            {
+                ViewData["Message"] = "Fridge not found!";
+                return View();
+            }
         }
     }
 }

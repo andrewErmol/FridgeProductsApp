@@ -1,9 +1,20 @@
 ﻿@model List<FridgeProductDto>
 
 <div>
-     <h3>FridgeProducts</h3>
+    <h3>Fridge Product</h3>
 
-     <table class="table">
+    <form class="get-form" asp-action="GetProductsInsideFridge" method="post">
+        <input class="simple-input" type="text" name="fridgeId" placeholder="Fridge id"/>
+        <button class="submit-btn" type="submit">Get</button>
+    </form>  
+
+    <p></p>
+    <a class="back-btn" href="Index">Back</a>
+    <p></p>
+
+    @if (@Model != null)
+    {
+        <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
@@ -24,11 +35,10 @@
             }
         </tbody>
      </table>
+    }
 
-     @if (ViewData["Message"] != null)
+    @if (ViewData["Message"] != null)
     {
         <h5 style="color: red">@ViewData["Message"]</h5>
     }
-
-     <a class="back-btn" href="Index">Back</a>
 </div>

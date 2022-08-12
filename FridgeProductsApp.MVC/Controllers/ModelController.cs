@@ -2,10 +2,13 @@
 using Flurl.Http.Configuration;
 using FridgeProductsApp.Domain.DTO.Model;
 using FridgeProductsApp.Domain.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FridgeProductsApp.MVC.Controllers
 {
+    [Route("[controller]/[action]/")]
+    [Authorize]
     public class ModelController : Controller
     {
         private readonly IFlurlClient _flurlClient;
@@ -31,12 +34,21 @@ namespace FridgeProductsApp.MVC.Controllers
             return View();
         }
 
+        #region CRUD
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var result = await _flurlClient.Request("GetAllModels").GetJsonAsync<List<Model>>();
+            try
+            {
+                var result = await _flurlClient.Request("GetAllModels").GetJsonAsync<List<Model>>();
 
-            return View(result);
+                return View(result);
+            }
+            catch
+            {
+                ViewData["Message"] = "Model not found!";
+                return View();
+            }
         }
 
         [HttpGet]
@@ -129,5 +141,6 @@ namespace FridgeProductsApp.MVC.Controllers
             }
             return View();
         }
+        #endregion
     }
 }

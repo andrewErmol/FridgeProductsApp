@@ -31,7 +31,7 @@ namespace FridgeProductsApp.API.Controllers
             _authManager = authManager;
         }
 
-        [HttpPost("login")]
+        [HttpPost]
         public async Task<IActionResult> Authenticate([FromBody] UserForAuthenticationDto user)
         {
             if (!await _authManager.ValidateUser(user))
@@ -40,7 +40,9 @@ namespace FridgeProductsApp.API.Controllers
                 return Unauthorized();
             }
 
-            return Ok(new { Token = await _authManager.CreateToken() });
+            string token = await _authManager.CreateToken();
+
+            return Ok(token);
         }
 
         [HttpPost]

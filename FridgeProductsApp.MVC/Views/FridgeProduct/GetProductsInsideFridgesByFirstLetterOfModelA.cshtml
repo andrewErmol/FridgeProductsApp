@@ -1,9 +1,16 @@
 ﻿@model List<FridgeProductDto>
 
 <div>
-     <h3>FridgeProducts</h3>
+    <h3>FridgeProducts</h3>
+    
+    @if (ViewData["Message"] != null)
+    {
+        <h5 style="color: red">@ViewData["Message"]</h5>
+    }
 
-     <table class="table">
+    @if (@Model != null)
+    {
+        <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
@@ -23,11 +30,11 @@
                 </tr>
             }
         </tbody>
-     </table>
-
-     @if (ViewData["Message"] != null)
+        </table>
+    }
+    else
     {
-        <h5 style="color: red">@ViewData["Message"]</h5>
+        <p>Nothing was found</p>
     }
 
      <a class="back-btn" href="Index">Back</a>
