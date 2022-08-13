@@ -17,12 +17,12 @@ namespace FridgeProductsApp.Database.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.6")
+                .HasAnnotation("ProductVersion", "6.0.7")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("FridgeProducts.Domain.Models.Fridge", b =>
+            modelBuilder.Entity("FridgeProductsApp.Domain.Models.Fridge", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -69,7 +69,7 @@ namespace FridgeProductsApp.Database.Migrations
                         });
                 });
 
-            modelBuilder.Entity("FridgeProducts.Domain.Models.FridgeProduct", b =>
+            modelBuilder.Entity("FridgeProductsApp.Domain.Models.FridgeProduct", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -116,7 +116,7 @@ namespace FridgeProductsApp.Database.Migrations
                         });
                 });
 
-            modelBuilder.Entity("FridgeProducts.Domain.Models.Model", b =>
+            modelBuilder.Entity("FridgeProductsApp.Domain.Models.Model", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -154,7 +154,7 @@ namespace FridgeProductsApp.Database.Migrations
                         });
                 });
 
-            modelBuilder.Entity("FridgeProducts.Domain.Models.Product", b =>
+            modelBuilder.Entity("FridgeProductsApp.Domain.Models.Product", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -167,6 +167,10 @@ namespace FridgeProductsApp.Database.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Url")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.ToTable("Products");
@@ -176,23 +180,26 @@ namespace FridgeProductsApp.Database.Migrations
                         {
                             Id = new Guid("71ef7bc0-300b-40cc-b2e3-07123bec1137"),
                             DefaultQuantity = 1,
-                            Name = "Milk"
+                            Name = "Milk",
+                            Url = "https://media.istockphoto.com/photos/blue-and-white-milk-box-picture-id489986642"
                         },
                         new
                         {
                             Id = new Guid("9e66f3fd-3d2d-4fb3-a0b3-be5a917dc424"),
                             DefaultQuantity = 4,
-                            Name = "Apple"
+                            Name = "Apple",
+                            Url = "https://healthjade.com/wp-content/uploads/2017/10/apple-fruit.jpg"
                         },
                         new
                         {
                             Id = new Guid("0764d13f-7aea-4d58-a087-774b61041a08"),
                             DefaultQuantity = 3,
-                            Name = "Banana"
+                            Name = "Banana",
+                            Url = "https://images.immediate.co.uk/production/volatile/sites/30/2017/01/Bananas-218094b-scaled.jpg"
                         });
                 });
 
-            modelBuilder.Entity("FridgeProducts.Domain.Models.User", b =>
+            modelBuilder.Entity("FridgeProductsApp.Domain.Models.User", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -294,15 +301,15 @@ namespace FridgeProductsApp.Database.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "5cc680d5-da65-4510-adb8-cd45d80f0de7",
-                            ConcurrencyStamp = "573ee9de-c1cc-4743-b479-e98b6f963b1f",
+                            Id = "9be887f4-6ba4-4b83-b257-d6cab9119ce6",
+                            ConcurrencyStamp = "72f6badd-166b-4f1f-a95a-d3994506eae7",
                             Name = "Manager",
                             NormalizedName = "MANAGER"
                         },
                         new
                         {
-                            Id = "fb877cf3-f3a5-4db9-a8d1-e45b6355fd5b",
-                            ConcurrencyStamp = "fbadaba9-0875-4e3d-9e2a-df151e5447d1",
+                            Id = "b22aec5d-c8de-4459-be97-e0cae728dc2e",
+                            ConcurrencyStamp = "427cd314-daf3-42f3-a3ab-fa422ae7fecf",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         });
@@ -414,9 +421,9 @@ namespace FridgeProductsApp.Database.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("FridgeProducts.Domain.Models.Fridge", b =>
+            modelBuilder.Entity("FridgeProductsApp.Domain.Models.Fridge", b =>
                 {
-                    b.HasOne("FridgeProducts.Domain.Models.Model", "Model")
+                    b.HasOne("FridgeProductsApp.Domain.Models.Model", "Model")
                         .WithMany()
                         .HasForeignKey("ModelId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -425,15 +432,15 @@ namespace FridgeProductsApp.Database.Migrations
                     b.Navigation("Model");
                 });
 
-            modelBuilder.Entity("FridgeProducts.Domain.Models.FridgeProduct", b =>
+            modelBuilder.Entity("FridgeProductsApp.Domain.Models.FridgeProduct", b =>
                 {
-                    b.HasOne("FridgeProducts.Domain.Models.Fridge", "Fridge")
+                    b.HasOne("FridgeProductsApp.Domain.Models.Fridge", "Fridge")
                         .WithMany()
                         .HasForeignKey("FridgeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("FridgeProducts.Domain.Models.Product", "Product")
+                    b.HasOne("FridgeProductsApp.Domain.Models.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -455,7 +462,7 @@ namespace FridgeProductsApp.Database.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("FridgeProducts.Domain.Models.User", null)
+                    b.HasOne("FridgeProductsApp.Domain.Models.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -464,7 +471,7 @@ namespace FridgeProductsApp.Database.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("FridgeProducts.Domain.Models.User", null)
+                    b.HasOne("FridgeProductsApp.Domain.Models.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -479,7 +486,7 @@ namespace FridgeProductsApp.Database.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("FridgeProducts.Domain.Models.User", null)
+                    b.HasOne("FridgeProductsApp.Domain.Models.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -488,7 +495,7 @@ namespace FridgeProductsApp.Database.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("FridgeProducts.Domain.Models.User", null)
+                    b.HasOne("FridgeProductsApp.Domain.Models.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)

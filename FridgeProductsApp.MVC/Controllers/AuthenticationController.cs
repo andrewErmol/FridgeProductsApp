@@ -33,7 +33,7 @@ namespace FridgeProductsApp.MVC.Controllers
                 var token = result.Content.ReadAsStringAsync().Result;
                 Response.Cookies.Append("X-Access-Token", token, new CookieOptions
                 {
-                    MaxAge = TimeSpan.FromMinutes(1)
+                    MaxAge = TimeSpan.FromMinutes(5)
                 });
 
                 return RedirectToRoute(new { controller = "Home", action = "Index" });

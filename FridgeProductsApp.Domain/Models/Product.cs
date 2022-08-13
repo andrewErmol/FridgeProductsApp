@@ -11,5 +11,7 @@ namespace FridgeProductsApp.Domain.Models
         public string Name { get; set; }
 
         public int DefaultQuantity { get; set; }
+
+        public string Url { get; set; }
     }
 }

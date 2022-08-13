@@ -8,5 +8,7 @@ namespace FridgeProductsApp.Domain.DTO.Product
         public string Name { get; set; }
 
         public int DefaultQuantity { get; set; }
+
+        public string Url { get; set; }
     }
 }

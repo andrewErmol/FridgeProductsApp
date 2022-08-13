@@ -1,10 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
 namespace FridgeProductsApp.Database.Migrations
 {
-    public partial class AddedRolesToDB : Migration
+    public partial class AddPictures : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -68,7 +69,8 @@ namespace FridgeProductsApp.Database.Migrations
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DefaultQuantity = table.Column<int>(type: "int", nullable: false)
+                    DefaultQuantity = table.Column<int>(type: "int", nullable: false),
+                    Url = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -232,8 +234,8 @@ namespace FridgeProductsApp.Database.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "5cc680d5-da65-4510-adb8-cd45d80f0de7", "573ee9de-c1cc-4743-b479-e98b6f963b1f", "Manager", "MANAGER" },
-                    { "fb877cf3-f3a5-4db9-a8d1-e45b6355fd5b", "fbadaba9-0875-4e3d-9e2a-df151e5447d1", "Administrator", "ADMINISTRATOR" }
+                    { "9be887f4-6ba4-4b83-b257-d6cab9119ce6", "72f6badd-166b-4f1f-a95a-d3994506eae7", "Manager", "MANAGER" },
+                    { "b22aec5d-c8de-4459-be97-e0cae728dc2e", "427cd314-daf3-42f3-a3ab-fa422ae7fecf", "Administrator", "ADMINISTRATOR" }
                 });
 
             migrationBuilder.InsertData(
@@ -248,12 +250,12 @@ namespace FridgeProductsApp.Database.Migrations
 
             migrationBuilder.InsertData(
                 table: "Products",
-                columns: new[] { "Id", "DefaultQuantity", "Name" },
+                columns: new[] { "Id", "DefaultQuantity", "Name", "Url" },
                 values: new object[,]
                 {
-                    { new Guid("0764d13f-7aea-4d58-a087-774b61041a08"), 3, "Banana" },
-                    { new Guid("71ef7bc0-300b-40cc-b2e3-07123bec1137"), 1, "Milk" },
-                    { new Guid("9e66f3fd-3d2d-4fb3-a0b3-be5a917dc424"), 4, "Apple" }
+                    { new Guid("0764d13f-7aea-4d58-a087-774b61041a08"), 3, "Banana", "https://images.immediate.co.uk/production/volatile/sites/30/2017/01/Bananas-218094b-scaled.jpg" },
+                    { new Guid("71ef7bc0-300b-40cc-b2e3-07123bec1137"), 1, "Milk", "https://media.istockphoto.com/photos/blue-and-white-milk-box-picture-id489986642" },
+                    { new Guid("9e66f3fd-3d2d-4fb3-a0b3-be5a917dc424"), 4, "Apple", "https://healthjade.com/wp-content/uploads/2017/10/apple-fruit.jpg" }
                 });
 
             migrationBuilder.InsertData(
@@ -348,21 +350,21 @@ namespace FridgeProductsApp.Database.Migrations
                 "WHERE Quantity = 0 END");
 
             migrationBuilder.Sql("CREATE PROCEDURE dbo.GetYearOfReleaseForFridgeWithMaxProductsCount " +
-                    "@year INT OUTPUT " +
-                "AS BEGIN " +
-                    "DECLARE @MaxQuantity INT " +
-                    "SELECT @MaxQuantity = MAX(TotalQuantity) " +
-                    "FROM(SELECT SUM(FridgeProducts.Quantity) AS TotalQuantity " +
-                    "FROM FridgeProducts " +
-                        "JOIN Fridges ON FridgeProducts.FridgeId = Fridges.Id " +
-                        "JOIN Models ON Fridges.ModelId = Models.Id " +
-                    "GROUP BY Fridges.Id) AS SumQuantity " +
-                    "SELECT @year = YearOfRelease " +
-                    "FROM Fridges JOIN Models ON Models.Id = Fridges.ModelId " +
-                        "JOIN FridgeProducts ON Fridges.Id = FridgeProducts.FridgeId " +
-                    "GROUP BY Fridges.Id, Models.Name, YearOfRelease " +
-                    "HAVING SUM(FridgeProducts.Quantity) = @MaxQuantity " +
-                "END");
+                                "@year INT OUTPUT " +
+                            "AS BEGIN " +
+                                "DECLARE @MaxQuantity INT " +
+                                "SELECT @MaxQuantity = MAX(TotalQuantity) " +
+                                "FROM(SELECT SUM(FridgeProducts.Quantity) AS TotalQuantity " +
+                                "FROM FridgeProducts " +
+                                    "JOIN Fridges ON FridgeProducts.FridgeId = Fridges.Id " +
+                                    "JOIN Models ON Fridges.ModelId = Models.Id " +
+                                "GROUP BY Fridges.Id) AS SumQuantity " +
+                                "SELECT @year = YearOfRelease " +
+                                "FROM Fridges JOIN Models ON Models.Id = Fridges.ModelId " +
+                                    "JOIN FridgeProducts ON Fridges.Id = FridgeProducts.FridgeId " +
+                                "GROUP BY Fridges.Id, Models.Name, YearOfRelease " +
+                                "HAVING SUM(FridgeProducts.Quantity) = @MaxQuantity " +
+                            "END");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
