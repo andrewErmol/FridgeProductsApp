@@ -1,0 +1,32 @@
+﻿@model UserForAuthenticationDto
+
+<div>
+    <h3>Authentication</h3>
+
+    @if (ViewData["Message"] != null)
+    {
+        <h5 style="color: red">@ViewData["Message"]</h5>
+    }
+
+    <form method="post" asp-action="Authenticate">
+        <div class="changing-field">
+            <label asp-for="UserName">User Name</label>
+            <div>
+                <input class="simple-input" asp-for="UserName"/>
+                <span class="error-message" asp-validation-for="UserName"></span>
+            </div>
+        </div>
+
+        <div class="changing-field">
+            <label asp-for="Password"></label>
+            <div>
+                <input class="simple-input" asp-for="Password"/>
+                <span class="error-message" asp-validation-for="Password"></span>
+            </div>
+        </div>
+
+        <button class="creation-btn" type="submit">Authenticate</button>
+    </form>
+
+    <a class="back-btn" href="/">Back</a>
+</div>

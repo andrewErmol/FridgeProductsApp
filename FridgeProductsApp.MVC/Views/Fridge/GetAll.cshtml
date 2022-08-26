@@ -1,0 +1,31 @@
+﻿@model List<FridgeDto>
+
+<div>
+     <h3>Fridges</h3>
+
+     <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Owner Name</th>
+                <th>Model Name</th>
+                <th>Year of Release</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var fridge in @Model)
+            {
+                <tr>
+                    <td>@fridge.Id</td>
+                    <td>@fridge.Name</td>
+                    <td>@fridge.OwnerName</td>
+                    <td>@fridge.ModelName</td>
+                    <td>@fridge.YearOfRelease</td>
+                </tr>
+            }
+        </tbody>
+     </table>
+
+     <a class="back-btn" href="Index">Back</a>
+</div>

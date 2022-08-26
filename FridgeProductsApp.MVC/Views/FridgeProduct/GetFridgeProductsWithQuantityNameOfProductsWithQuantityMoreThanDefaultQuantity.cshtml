@@ -1,0 +1,38 @@
+﻿@model List<FridgeWithQuantityNameOfProductsDto>
+
+<div>
+     <h3>Required fridges</h3>
+
+     <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Owner Name</th>
+                <th>Model Name</th>
+                <th>Year of Release</th>
+                <th>Quantity name of products</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var fridge in @Model)
+            {
+                <tr>
+                    <td>@fridge.Id</td>
+                    <td>@fridge.Name</td>
+                    <td>@fridge.OwnerName</td>
+                    <td>@fridge.ModelName</td>
+                    <td>@fridge.YearOfRelease</td>
+                    <td>@fridge.QuantityNameOfProducts</td>
+                </tr>
+            }
+        </tbody>
+     </table>
+
+     @if (ViewData["Message"] != null)
+    {
+        <h5 style="color: red">@ViewData["Message"]</h5>
+    }
+
+     <a class="back-btn" href="Index">Back</a>
+</div>

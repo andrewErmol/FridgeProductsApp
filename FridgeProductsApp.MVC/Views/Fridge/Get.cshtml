@@ -1,0 +1,43 @@
+﻿@model FridgeDto
+
+<div>
+    <h3>Fridge</h3>
+
+    <form class="get-form" asp-action="Get" method="post">
+        <input class="simple-input" type="text" name="id" placeholder="Id"/>
+        <button class="submit-btn" type="submit">Get</button>
+    </form>  
+
+    <p></p>
+    <a class="back-btn" href="Index">Back</a>
+    <p></p>
+
+    @if (@Model != null)
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Owner Name</th>
+                    <th>Model Name</th>
+                    <th>Year of Release</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@Model.Id</td>
+                    <td>@Model.Name</td>
+                    <td>@Model.OwnerName</td>
+                    <td>@Model.ModelName</td>
+                    <td>@Model.YearOfRelease</td>
+                </tr>
+            </tbody>
+        </table>
+    }
+
+    @if (ViewData["Message"] != null)
+    {
+        <h5 class="error-mes">@ViewData["Message"]</h5>
+    }
+</div>

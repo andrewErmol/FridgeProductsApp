@@ -1,0 +1,79 @@
+﻿@model UserForRegistrationDto
+
+@{
+    var roles = Model.Roles
+       .Select(i => new SelectListItem() { Text = i, Value = i })
+       .ToList();
+}
+
+<div>
+    <h3>Registration</h3>
+
+    @if (ViewData["Message"] != null)
+    {
+        <h5 style="color: red">@ViewData["Message"]</h5>
+    }
+
+    <form method="post" asp-action="Register">
+        <div class="changing-field">
+            <label asp-for="FirstName"></label>
+            <div>
+                <input class="simple-input" asp-for="FirstName"/>
+                <span class="error-message" asp-validation-for="FirstName"></span>
+            </div>
+        </div>
+
+        <div class="changing-field">
+            <label asp-for="LastName"></label>
+            <div>
+                <input class="simple-input" asp-for="LastName"/>
+                <span class="error-message" asp-validation-for="LastName"></span>
+            </div>
+        </div>
+
+        <div class="changing-field">
+            <label asp-for="UserName">Login</label>
+            <div>
+                <input class="simple-input" asp-for="UserName"/>
+                <span class="error-message" asp-validation-for="UserName"></span>
+            </div>
+        </div>
+
+        <div class="changing-field">
+            <label asp-for="Email"></label>
+            <div>
+                <input class="simple-input" asp-for="Email"/>
+                <span class="error-message" asp-validation-for="Email"></span>
+            </div>
+        </div>
+
+        <div class="changing-field">
+            <label asp-for="PhoneNumber"></label>
+            <div>
+                <input class="simple-input" asp-for="PhoneNumber"/>
+                <span class="error-message" asp-validation-for="PhoneNumber"></span>
+            </div>
+        </div>
+
+        <div class="changing-field">
+            <label asp-for="Password"></label>
+            <div>
+                <input class="simple-input" asp-for="Password"/>
+                <span class="error-message" asp-validation-for="Password"></span>
+            </div>
+        </div>
+
+        <div class="changing-field">
+            <label asp-for="Roles"></label>
+            <div>
+                <select multiple="multiple" size="3" asp-for="Roles" asp-items="@roles"></select>
+                <span class="error-message" asp-validation-for="Roles"></span>
+            </div>
+        </div>
+
+
+        <button class="creation-btn" type="submit">Register</button>
+    </form>
+
+    <a class="back-btn" href="/">Back</a>
+</div>

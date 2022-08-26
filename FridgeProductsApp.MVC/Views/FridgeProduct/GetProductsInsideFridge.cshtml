@@ -1,0 +1,44 @@
+﻿@model List<FridgeProductDto>
+
+<div>
+    <h3>Fridge Product</h3>
+
+    <form class="get-form" asp-action="GetProductsInsideFridge" method="post">
+        <input class="simple-input" type="text" name="fridgeId" placeholder="Fridge id"/>
+        <button class="submit-btn" type="submit">Get</button>
+    </form>  
+
+    <p></p>
+    <a class="back-btn" href="Index">Back</a>
+    <p></p>
+
+    @if (@Model != null)
+    {
+        <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Fridge Name</th>
+                <th>Product Name</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var fridgeProduct in @Model)
+            {
+                <tr>
+                    <td>@fridgeProduct.Id</td>
+                    <td>@fridgeProduct.FridgeName</td>
+                    <td>@fridgeProduct.ProductName</td>
+                    <td>@fridgeProduct.Quantity</td>
+                </tr>
+            }
+        </tbody>
+     </table>
+    }
+
+    @if (ViewData["Message"] != null)
+    {
+        <h5 style="color: red">@ViewData["Message"]</h5>
+    }
+</div>

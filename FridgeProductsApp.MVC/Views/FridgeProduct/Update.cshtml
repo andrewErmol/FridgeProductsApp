@@ -1,0 +1,48 @@
+﻿@model FridgeProductForUpdateDto
+
+<div>
+    <h3>Update FridgeProduct</h3>
+
+    <form method="post" asp-action="Update">
+        <div class="changing-field">
+            <label asp-for="Id"></label>
+            <div>
+                <input class="simple-input" asp-for="Id"/>
+                <span class="error-mes" asp-validation-for="Id"></span>
+            </div>
+        </div>
+
+        <div class="changing-field">
+            <label asp-for="FridgeId">Fridge Id</label>
+            <div>
+                <input class="simple-input" asp-for="FridgeId"/>
+                <span class="error-mes" asp-validation-for="FridgeId"></span>
+            </div>
+        </div>
+
+        <div class="changing-field">
+            <label asp-for="ProductId">Product Id</label>
+            <div>
+                <input class="simple-input" asp-for="ProductId"/>
+                <span class="error-mes" asp-validation-for="ProductId"></span>
+            </div>
+        </div>
+
+        <div class="changing-field">
+            <label asp-for="Quantity">Quantity</label>
+            <div>
+                <input class="simple-input" asp-for="Quantity"/>
+                <span class="error-mes" asp-validation-for="Quantity"></span>
+            </div>
+        </div>
+
+        <button class="creation-btn" type="submit">Update</button>
+    </form>
+
+    <a class="back-btn" href="Index">Back</a>
+
+    @if (ViewData["Message"] != null)
+    {
+        <h5>@ViewData["Message"]</h5>
+    }
+</div>

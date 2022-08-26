@@ -3,7 +3,55 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32505.173
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FridgeProductsApp.Domain", "FridgeProductsApp.Domain\FridgeProductsApp.Domain.csproj", "{08BA1109-691E-4823-AC71-8D805FA629F4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FridgeProductsApp.Contracts", "FridgeProductsApp.Contracts\FridgeProductsApp.Contracts.csproj", "{7BB9CFE0-7598-43DF-95D7-059747D9E997}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FridgeProductsApp.Database", "FridgeProductsApp.Database\FridgeProductsApp.Database.csproj", "{729DA9F9-0718-4E90-95DA-C9E8EE445E43}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FridgeProductsApp.API", "FridgeProductsApp.API\FridgeProductsApp.API.csproj", "{4C2CA574-C7C5-4712-B3E6-101C98F622E8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FridgeProductsApp.LoggerService", "FridgeProductsApp.LoggerService\FridgeProductsApp.LoggerService.csproj", "{C6FEF3C6-77E0-4C70-B348-6AF34B3FC0F9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FridgeProductsApp.MVC", "FridgeProductsApp.MVC\FridgeProductsApp.MVC.csproj", "{0AAD6033-F70A-4D6A-800A-91DB0581EE68}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FridgeProductsApp.Tests", "FridgeProductsApp.Tests\FridgeProductsApp.Tests.csproj", "{8D1AFF6E-02B6-41DF-AF59-4F61318291DF}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{08BA1109-691E-4823-AC71-8D805FA629F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08BA1109-691E-4823-AC71-8D805FA629F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08BA1109-691E-4823-AC71-8D805FA629F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08BA1109-691E-4823-AC71-8D805FA629F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BB9CFE0-7598-43DF-95D7-059747D9E997}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BB9CFE0-7598-43DF-95D7-059747D9E997}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BB9CFE0-7598-43DF-95D7-059747D9E997}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BB9CFE0-7598-43DF-95D7-059747D9E997}.Release|Any CPU.Build.0 = Release|Any CPU
+		{729DA9F9-0718-4E90-95DA-C9E8EE445E43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{729DA9F9-0718-4E90-95DA-C9E8EE445E43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{729DA9F9-0718-4E90-95DA-C9E8EE445E43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{729DA9F9-0718-4E90-95DA-C9E8EE445E43}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C2CA574-C7C5-4712-B3E6-101C98F622E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C2CA574-C7C5-4712-B3E6-101C98F622E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C2CA574-C7C5-4712-B3E6-101C98F622E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C2CA574-C7C5-4712-B3E6-101C98F622E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6FEF3C6-77E0-4C70-B348-6AF34B3FC0F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6FEF3C6-77E0-4C70-B348-6AF34B3FC0F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6FEF3C6-77E0-4C70-B348-6AF34B3FC0F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6FEF3C6-77E0-4C70-B348-6AF34B3FC0F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AAD6033-F70A-4D6A-800A-91DB0581EE68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AAD6033-F70A-4D6A-800A-91DB0581EE68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AAD6033-F70A-4D6A-800A-91DB0581EE68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AAD6033-F70A-4D6A-800A-91DB0581EE68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D1AFF6E-02B6-41DF-AF59-4F61318291DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D1AFF6E-02B6-41DF-AF59-4F61318291DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D1AFF6E-02B6-41DF-AF59-4F61318291DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D1AFF6E-02B6-41DF-AF59-4F61318291DF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection

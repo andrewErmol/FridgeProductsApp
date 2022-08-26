@@ -1,0 +1,35 @@
+﻿@model List<AllFridgesWithQuantityProductsInsideDto>
+
+<div>
+     <h3>All fridges with quantity products inside</h3>
+
+    @if(@Model != null)
+    {
+        <table class="table">
+        <thead>
+            <tr>
+                <th>Fridge Id</th>
+                <th>Fridge Name</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var fridge in @Model)
+            {
+                <tr>
+                    <td>@fridge.FridgeId</td>
+                    <td>@fridge.FridgeName</td>
+                    <td>@fridge.Quantity</td>
+                </tr>
+            }
+        </tbody>
+     </table>
+    }   
+
+    @if (ViewData["Message"] != null)
+    {
+        <h5 style="color: red">@ViewData["Message"]</h5>
+    }
+
+     <a class="back-btn" href="Index">Back</a>
+</div>
