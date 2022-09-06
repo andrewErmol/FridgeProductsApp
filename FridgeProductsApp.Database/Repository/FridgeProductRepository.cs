@@ -25,7 +25,14 @@ namespace FridgeProductsApp.Database.Repository
             FindAll(trackChanges).Where(fp => fp.FridgeId == fridgeId)
             .Include(fp => fp.Fridge).Include(fp => fp.Product).ToList();
 
-        public void CreateFridgeProduct(FridgeProduct fridgeProduct) => Create(fridgeProduct);
+        public void CreateFridgeProduct(FridgeProduct fridgeProduct)
+        {
+            if (FindAll(false).FirstOrDefault(fp => fp.FridgeId == fridgeProduct.FridgeId && fp.ProductId == fridgeProduct.ProductId) is not null)
+            {
+                throw new Exception("This product is alresdy exists in that fridge. You can update it.");
+            }
+            Create(fridgeProduct);
+        }
 
         public void DeleteFridgeProduct(FridgeProduct fridgeProduct) => Delete(fridgeProduct);
 
