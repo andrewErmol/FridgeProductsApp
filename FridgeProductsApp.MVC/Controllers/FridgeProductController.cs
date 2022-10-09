@@ -91,7 +91,7 @@ namespace FridgeProductsApp.MVC.Controllers
             }
             catch
             {
-                ViewData["Message"] = null;
+                ViewData["Message"] = $"In this fridge already exist this product";
             }
             return View();
         }
