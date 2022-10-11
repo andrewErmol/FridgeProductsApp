@@ -23,8 +23,4 @@
     <ProjectReference Include="..\FridgeProductsApp.LoggerService\FridgeProductsApp.LoggerService.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="ASDFGHJK\" />
-  </ItemGroup>
-
 </Project>
